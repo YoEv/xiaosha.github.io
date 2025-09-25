@@ -12,9 +12,13 @@
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{
-    margin:0; background:#fff; color:var(--ink);
-    font-family:"Helvetica Neue",Arial,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
   }
 
   /* 页面容器：水平居中 */
@@ -68,58 +72,58 @@
     max-width:720px; line-height:1.7; font-size:.98rem; margin:34px 0 18px;
   }
 
-  /* 钢琴区域（严格按草图：右侧竖框、白键水平条、黑键在左边下一行） */
-  .piano{
-    width:740px; max-width:100%;
-    border:2px solid var(--ink); border-radius:10px;
-    background:linear-gradient(180deg,var(--white-0),#fdfdfd);
-    box-shadow:0 2px 6px rgba(0,0,0,.05);
-    overflow:hidden;
+  /* 钢琴区域 */
+  .piano {
+    border: 1px solid #111;
+    width: 600px;
   }
 
-  /* 每一组：一条白键 + 一条左侧黑键（作者） */
-  .key-row{
-    position:relative; height:96px; border-top:1px solid var(--line);
+  .key-row {
+    position: relative;
+    height: 80px;
+    border-top: 1px solid #ccc;
   }
-  .key-row:first-child{border-top:0}
+  .key-row:first-child {
+    border-top: none;
+  }
 
   /* 白键（标题） */
-  .white-key{
-    position:absolute; left:0; right:0; top:10px; height:56px;
-    display:flex; align-items:center; padding-left:14px;
-    font-weight:700; font-size:1rem; color:var(--ink);
-    text-decoration:none; cursor:pointer;
-    background:linear-gradient(180deg,var(--white-0) 0%, var(--white-1) 100%);
-    transition:all .25s ease;
+  .white-key {
+    position: absolute;
+    left: 0; right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #111;
+    background: #fff;
+    transition: background 0.2s;
   }
-  .white-key:hover{
-    background:linear-gradient(180deg,#fefefe 0%, var(--white-2) 100%);
-    box-shadow:inset 0 2px 4px rgba(0,0,0,.14);
-    transform:scale(1.01);
-  }
-
-  /* 黑键（作者，左侧） */
-  .black-key{
-    position:absolute; left:0; top:52px; width:46%; height:42px;
-    display:flex; align-items:center; padding-left:12px;
-    color:#fff; text-decoration:none; cursor:pointer; font-size:.9rem;
-    border-radius:4px;
-    background:linear-gradient(180deg,var(--black-2) 0%, var(--black-0) 100%);
-    box-shadow:0 4px 7px rgba(0,0,0,.32);
-    transition:all .25s ease;
-  }
-  .black-key:hover{
-    transform:translateY(-3px);
-    box-shadow:0 7px 12px rgba(0,0,0,.45);
-    background:linear-gradient(180deg,#505050 0%, #000 100%);
+  .white-key:hover {
+    background: #f2f2f2;
   }
 
-  /* 响应式：窄屏上下堆叠 */
-  @media (max-width:860px){
-    .page{flex-direction:column; align-items:stretch}
-    .top-links{position:static; margin-left:auto; margin-bottom:10px}
-    .intro{margin-top:8px}
-    .sidebar{width:100%}
+  /* 黑键（作者） */
+  .black-key {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 45%;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .black-key:hover {
+    background: #222;
+    transform: translateY(-2px);
   }
 </style>
 </head>
@@ -167,40 +171,22 @@
     <section class="piano" aria-label="Publications on a piano layout">
       <!-- row 1 -->
       <div class="key-row">
-        <a class="white-key" href="https://arxiv.org/abs/2509.04980" target="_blank" rel="noopener">
-          When Noise Lowers Loss
-        </a>
-        <a class="black-key" href="https://arxiv.org/abs/2509.04980" target="_blank" rel="noopener">
-          Xiaosha Li, Chun Liu, Ziyi Wang
-        </a>
+        <a href="https://arxiv.org/abs/2509.04980" class="white-key" target="_blank">When Noise Lowers Loss</a>
+        <a href="https://arxiv.org/abs/2509.04980" class="black-key" target="_blank">Xiaosha Li, Chun Liu, Ziyi Wu</a>
       </div>
 
       <!-- row 2 -->
       <div class="key-row">
-        <a class="white-key" href="https://github.com/YoEv/Gen-to-Gen" target="_blank" rel="noopener">
-          Gen to Gen
-        </a>
-        <a class="black-key" href="https://github.com/YoEv/Gen-to-Gen" target="_blank" rel="noopener">
-          Xiaosha Li, Neil Leonard
-        </a>
+      <a href="https://github.com/YoEv/Gen-to-Gen" class="white-key" target="_blank">Gen to Gen</a>
+      <a href="https://github.com/YoEv/Gen-to-Gen" class="black-key" target="_blank">Xiaosha Li, Neil Leonard</a>
       </div>
 
       <!-- row 3 -->
       <div class="key-row">
-        <a class="white-key" href="#" target="_blank" rel="noopener">[Future Article 1]</a>
-        <a class="black-key" href="#" target="_blank" rel="noopener">[Author Names]</a>
+      <a href="#" class="white-key">[Future Article 1]</a>
+      <a href="#" class="black-key">[Author Names]</a>
       </div>
 
-      <!-- row 4 -->
-      <div class="key-row">
-        <a class="white-key" href="#" target="_blank" rel="noopener">[Future Article 2]</a>
-        <a class="black-key" href="#" target="_blank" rel="noopener">[Author Names]</a>
-      </div>
-
-      <!-- row 5 -->
-      <div class="key-row">
-        <a class="white-key" href="#" target="_blank" rel="noopener">[Future Article 3]</a>
-        <a class="black-key" href="#" target="_blank" rel="noopener">[Author Names]</a>
       </div>
     </section>
   </main>
